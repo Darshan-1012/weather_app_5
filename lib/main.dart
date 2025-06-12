@@ -6,7 +6,7 @@ import 'package:weather_app_5/pages/loading.dart';
 void main() {
   runApp(
     MaterialApp(
-      initialRoute: '/home',
+      initialRoute: '/',
       routes: {
         '/': (context) => Loading(),
         '/home': (context) => Home(),
