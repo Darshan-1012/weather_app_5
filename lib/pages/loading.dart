@@ -17,7 +17,7 @@ void setupWorldTime() async{
   await instance.getTime();
   print(instance.time);
   setState(() {
-    time = instance.time  ?? 'time dont know';
+    time = instance.time ?? 'caught an error';
   });
 }
   @override
