@@ -15,9 +15,10 @@ class _LoadingState extends State<Loading> {
 void setupWorldTime() async{
   WorldTime instance = WorldTime(location: 'Amsterdam', flag: 'Amsterdam.jpeg', url: 'Europe/Amsterdam');
   await instance.getTime();
-  print(instance.time);
-  setState(() {
-    time = instance.time ?? 'caught an error';
+  Navigator.pushReplacementNamed(context, '/home', arguments: {
+    'location':instance.location,
+    'flag':instance.flag,
+    'time':instance.time,
   });
 }
   @override
@@ -32,7 +33,7 @@ void setupWorldTime() async{
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(50),
-        child: Text(time), 
+        child: Text('loading'), 
       ),
     );
   }
