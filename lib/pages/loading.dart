@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app_5/services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   const Loading({super.key});
@@ -15,7 +16,7 @@ class _LoadingState extends State<Loading> {
 void setupWorldTime() async{
   WorldTime instance = WorldTime(location: 'Amsterdam', flag: 'Amsterdam.jpeg', url: 'Europe/Amsterdam');
   await instance.getTime();
-  Navigator.pushReplacementNamed(context, '/home', arguments: {
+  Navigator.pushReplacementNamed(context, '/home', arguments: { // <-- Used to navigate to next page
     'location':instance.location,
     'flag':instance.flag,
     'time':instance.time,
@@ -24,16 +25,19 @@ void setupWorldTime() async{
   @override
   void initState() {
     super.initState();
-    setupWorldTime();
+    setupWorldTime(); //<-- Get the function from above
   }
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(50),
-        child: Text('loading'), 
+      backgroundColor: Colors.blue[900],
+      body: Center(
+        child: SpinKitCubeGrid( //<--- This is a new pacckage for loading screen
+              color: Colors.white,
+              size: 50.0,
+            ),
       ),
     );
   }

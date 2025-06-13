@@ -1,5 +1,6 @@
 import 'package:http/http.dart';
 import 'dart:convert';
+// import 'package:intl/intl.dart';
 
 class WorldTime {
 
@@ -18,6 +19,7 @@ class WorldTime {
 
     String datetime = data['dateTime'];
     time = DateTime.parse(datetime).toString();// to get timeonly time = data['time'].toString();
+    time = data['time']; //<-- To get just the time without the date
     }
     catch(e){
       print('caught an error - $e');
